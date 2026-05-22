@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\ChatController;
 
-Route::get('/', [PhotoController::class, 'index']);
+Route::get('/', function () {
+    return redirect('/1');
+});
 
-Route::post('/like/{photo}', [PhotoController::class, 'like']);
+Route::get('/{user}', [ChatController::class, 'index']);
+
+Route::post('/send-message/{user}', [ChatController::class, 'send']);
